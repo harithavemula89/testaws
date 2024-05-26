@@ -68,13 +68,15 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            script {
-                // Cleanup and remove the plan file
-                sh 'rm -f tfplan'
-            }
+    post { 
+     always {
+        try {
+             emailext (...)
+        } catch (error) { 
+          // ignore error
         }
+     }
+}
 
         success {
             echo 'Terraform apply completed successfully!'

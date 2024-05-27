@@ -5,7 +5,7 @@ pipeline {
         // Set your AWS credentials and region
         AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
-        AWS_REGION = 'ap-south-1' // Change this to your desired region
+        AWS_REGION = 'us-east-1' // Change this to your desired region
 
         // Define the Terraform version to use
         TERRAFORM_VERSION = '1.0.0'
@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from the GitHub repository
-                git branch: 'main', url: 'https://github.com/harithavemula89/testaws.git'
+                git branch: 'main', url: 'https://github.com/harithavemula89/testaws'
             }
         }
 	
@@ -68,15 +68,13 @@ pipeline {
         }
     }
 
-    post { 
-     always {
-        try {
-             emailext (...)
-        } catch (error) { 
-          // ignore error
+    post {
+        always {
+            script {
+                // Cleanup and remove the plan file
+                sh 'rm -f tfplan'
+            }
         }
-     }
-}
 
         success {
             echo 'Terraform apply completed successfully!'

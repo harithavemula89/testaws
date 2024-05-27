@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-west-2" # Update to your desired region
+  region = "us-east-1" # Update to your desired region
 }
 
 # Define a variable for the cluster name

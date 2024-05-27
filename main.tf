@@ -23,7 +23,7 @@ resource "aws_iam_role" "ecs_task_execution_role" {
       {
         "Action": [
                 "ecs:CreateCluster",
-                "ecs:ListClusters",
+                "ecs:ListClusters"
         Effect    = "Allow",
         Principal = {
           Service = "ecs-tasks.amazonaws.com"

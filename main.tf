@@ -5,11 +5,11 @@ provider "aws" {
 # Define a variable for the cluster name
 variable "cluster_name" {
   description = "The name of the ECS Cluster"
-  default     = "my-ecs-cluster"
+  default     = "my-ecs-cluster1"
 }
 
 # Create the ECS Cluster
-resource "aws_ecs_cluster" "my_cluster" {
+resource "aws_ecs_cluster" "my_cluster1" {
   name = var.cluster_name
 }
 
